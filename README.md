@@ -81,8 +81,6 @@ person = {
 
 puts person[:name]   # → Soundarya
 
-That name: is a shortcut for :name =>. (Old version)
-
 In Method Arguments (keyword args)
 def greet(name:, city:)
   puts "Hello #{name} from #{city}"
