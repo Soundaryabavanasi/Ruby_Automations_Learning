@@ -17,6 +17,7 @@ No semicolons required:
 Comments start with #
 
 What is Indentation? 
+
 Indentation = spaces at the beginning of a line of code to show that it's inside something else.
 
 def test
@@ -89,6 +90,7 @@ end
 greet(name: "Soundarya", city: "Kadapa")
 
 Problem Statement:
+
 # Step 1: Creating an array with different data types
 mixed_array = [1, "hello", :symbol, true, 3.14, false, "world", 10, :ruby]
 
