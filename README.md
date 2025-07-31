@@ -365,10 +365,13 @@ require 'json'
 require 'csv'
 
 # 1. Read a plain text file (.txt)
+
 file_path = “file.txt”
 def read_text_file(file_path)
-  File.readlines(file_path).each { |line| puts line.strip }
+File.readlines(file_path).each { |line| puts line.strip }
 end
+
+
 Blocks, Procs, Lambdas:
 Blocks:
 A block in Ruby is a chunk of code enclosed between do...end or {} that can be passed to a method and executed from inside that method using the yield keyword or &block.call
@@ -387,11 +390,15 @@ end
 greet do         ## block
   puts "Hello from block"
 end
+
+
 Proc:
 A Proc is an object in Ruby that stores a block of code which you can reuse and call later. 
 Note: To make the words in different line we can use “/”
 Ex: green = proc.new{puts=”Soundarya Bhavanasi”}
 green.call
+
+
 Lampda: Same as Proc but the difference is it will not accept the without arguments null values. Where
 
 Ex: green = proc.new{|name|puts=”Soundarya Bhavanasi #{name}”}
@@ -403,6 +410,8 @@ For mathematics things It will through error
 
 Ex: add_proc = Proc.new { |a, b| puts a + b }
 add_proc.call(1) 
+
+
 # => NoMethodError (undefined method `+` for nil)
 
 Ex: green =lambda.new{|name|puts=”Soundarya Bhavanasi #{name}”}
@@ -426,7 +435,11 @@ calc_lambda = lambda {|a, b|
 }
 
 calc_lambda.call(2, 4)
-Begin-rescue-ensure
+
+
+
+Begin-rescue-ensure: To handle errors without crashing the program and to control cleanup even if something goes wrong.
+
 def divide(a, b)
   begin
     result = a / b
