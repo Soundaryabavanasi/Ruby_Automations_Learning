@@ -1,10 +1,8 @@
-# Ruby_Automations_Learning
-
 Ruby : 
 
 Ruby is a readable and developer-friendly language that's easy to understand. In Ruby, we don't need to declare data types explicitly—we just assign values to variables, and the language automatically understands the type.
 
-Ruby Syntax:
+  Ruby Syntax:
 No need to declare data types
 
 Ex: name = “soundarya”
@@ -12,14 +10,12 @@ Ex: name = “soundarya”
      Is_admin = true
 
 No semicolons required:
- Name: “Soundarya”
+                Name: “Soundarya”
 
 Comments start with #
 
 What is Indentation? 
-
 Indentation = spaces at the beginning of a line of code to show that it's inside something else.
-
 def test
   puts "Hello, world!"
 end
@@ -39,7 +35,7 @@ m = 3   # multiple value
   else
     puts num
   end
-End
+end
 
 Data Types:
 
@@ -62,7 +58,7 @@ fruits = ["apple", "banana", "mango"]
 numbers = [1, 2, 3, 4, 5]
 
 Hashes: Storing all the information in one
-
+{key:value}
 person = { name: "Soundarya", age: 22 }
 
 Accessing:
@@ -74,6 +70,7 @@ person[:name] = "Soundarya Reddy"
 person[:age] = 23
 
 Symbols:
+{:name}
 
 person = {
   name: "Soundarya",
@@ -81,6 +78,8 @@ person = {
 }
 
 puts person[:name]   # → Soundarya
+
+That name: is a shortcut for :name =>. (Old version)
 
 In Method Arguments (keyword args)
 def greet(name:, city:)
@@ -90,7 +89,6 @@ end
 greet(name: "Soundarya", city: "Kadapa")
 
 Problem Statement:
-
 # Step 1: Creating an array with different data types
 mixed_array = [1, "hello", :symbol, true, 3.14, false, "world", 10, :ruby]
 
@@ -98,7 +96,8 @@ mixed_array = [1, "hello", :symbol, true, 3.14, false, "world", 10, :ruby]
 
 def count_types(array)
   result = {}
-    array.each do |item|
+
+  array.each do |item|
     type = item.class
      result[type] = 0
      result[type] += 1
@@ -140,53 +139,41 @@ Instance variables
 Class variables
 Constant variables
 
-Type	Example	Scope (Where it's accessible)
-
-Local variable	name = "Soundarya"	Only inside the method/block where it's declared
-Global variable	$name = "Global"	Everywhere in the program (NOT recommended)
-Instance variable	@name = "User"	Only accessible in the same object instance
-Class variable	@@name = "Class"	Shared across all objects of that class
-Constant	Name = "Fixed"	Accessible based on where it's defined (e.g., inside/outside classes/modules)
-
-Local Variable (name):
-Exists only inside the method or block where it is defined.
-
-It disappears after the method ends.
-
-Not attached to any object — it’s just temporary.
-
-🔹 Instance Variable (@name):
-Belongs to a specific object instance.
-
-Lives as long as the object lives.
-You can access it across methods inside the same object.
-
-@ is instance-level, not global like $.
-You cannot access @name from outside the object unless you create a method for it.
-
-
-Ex: class Person
-  def set_name
-    @name = "Soundarya"
+1.Local variables are only accessible within the block, method, or class where they are defined. They begin with a lowercase letter or _
+    Ex: def greet
+      message = "Hello"  # local variable
+  puts message
   end
-
-  def get_name
-    puts @name
-  end
+ greet
+# Output: Hello
+2. Global variables are accessible from anywhere in the Ruby program. They begin with a $.
+$global_message = "Hello from anywhere!"
+def show_message
+ puts $global_message
 end
+show_message
+puts $global_message
+# Output: 
+# Hello from anywhere!
+# Hello from anywhere!
+3. Instance variables are tied to a specific object. They begin with @ and are available across methods within the same object.
+class Person
+  def initialize(name)
+  @name = name   # instance variable
+  end
 
-p = Person.new
-p.set_name
-p.get_name    #Output: Soundarya
+   def show_name
+  puts "Name is #{@name}"      # access instance variable
+   puts "Current object is #{self}" # access object using self
+  end
+End
 
-@ → Instance Variable
+4.Class Variables: A class variable is shared across the class and all its objects.
+It starts with @@
 
-
-@@ → Class Variable
-
-
-$ → Global Variable
-
+5.Constant Variables: A constant is a variable that should not change once assigned.
+It starts with an uppercase letter, usually ALL_CAPS by convention.
+Accessible across the class or module where it's defined.
 
 Problem:
 PI = 3.14         # Constant
@@ -198,28 +185,12 @@ def show_scope
   puts $greet
   puts local
 end
-
 show_scope
-puts PI
+     puts PI
 puts $greet
 puts local  #  Error: local is not accessible here
 
-Control Flow:
-if Statement
-Used to run when the condition is matched or true
-num =12
-If num>=10
-Puts “The number is greater than 10”
-
-end
-
-is_raining = false
-
-unless is_raining
-  puts "Go outside, it's sunny!"
-End
-
-Control Flow:
+Control Flow:    
 If Condition: The code run when the condition is true
          Num = 10
          Number = 20
@@ -320,7 +291,7 @@ def greet(name)
 end
 greet("Soundarya")   # Output: Hello, Soundarya!
 
- Splat Operator (*): The splat operator allow to handle multiple parameters as a group (array)
+ Splat Operator (*): The splat operator allows to handle multiple parameters as a group (array)
 Ex: def list_names(*names)
   puts names
 end
@@ -367,13 +338,10 @@ require 'json'
 require 'csv'
 
 # 1. Read a plain text file (.txt)
-
 file_path = “file.txt”
 def read_text_file(file_path)
-File.readlines(file_path).each { |line| puts line.strip }
+  File.readlines(file_path).each { |line| puts line.strip }
 end
-
-
 Blocks, Procs, Lambdas:
 Blocks:
 A block in Ruby is a chunk of code enclosed between do...end or {} that can be passed to a method and executed from inside that method using the yield keyword or &block.call
@@ -381,7 +349,7 @@ Ex:
 def green
 Yield        // calling the method to print
 end
-green do
+green do  // block
 Puts “Soundarya”
 end
 With block.call:
@@ -392,33 +360,26 @@ end
 greet do         ## block
   puts "Hello from block"
 end
-
-
 Proc:
 A Proc is an object in Ruby that stores a block of code which you can reuse and call later. 
-Note: To make the words in different line we can use “/”
 Ex: green = proc.new{puts=”Soundarya Bhavanasi”}
 green.call
-
-
 Lampda: Same as Proc but the difference is it will not accept the without arguments null values. Where
 
 Ex: green = proc.new{|name|puts=”Soundarya Bhavanasi #{name}”}
 green.call 
-// here without the giving value we can run passing null values.
+// here, without giving value, we can run passing null values.
 
-For mathematics things It will through error
+For mathematical things it will throw an error
 
 
 Ex: add_proc = Proc.new { |a, b| puts a + b }
-add_proc.call(1) 
-
-
+  add_proc.call(1) 
 # => NoMethodError (undefined method `+` for nil)
 
 Ex: green =lambda.new{|name|puts=”Soundarya Bhavanasi #{name}”}
 Lambda.call
-// Here it thorughs argument saying argument missing
+// Here it throws the argument saying argument missing
 
 Problem statement: 
 
@@ -437,15 +398,15 @@ calc_lambda = lambda {|a, b|
 }
 
 calc_lambda.call(2, 4)
-
-
-
-Begin-rescue-ensure: To handle errors without crashing the program and to control cleanup even if something goes wrong.
+Begin-rescue-ensure: 
+Run code that might raise an error (begin)
+Handle the error gracefully (rescue)
+Always run cleanup code, no matter what (ensure)
 
 def divide(a, b)
   begin
     result = a / b
-  rescue ZeroDivisionError => e
+  rescue errormessage => e
     puts "Error: #{e.message}"
   ensure
   end
@@ -453,49 +414,4 @@ end
 
 puts divide(10, 0)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Custom exceptions: Are used to create our own error messages and handle specific types of errors that may occur while running the code.
